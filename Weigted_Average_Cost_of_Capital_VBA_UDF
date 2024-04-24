@@ -1,0 +1,14 @@
+Function WACC(ByVal equity As Double, ByVal costOfEquity As Double, ByVal debt As Double, ByVal costOfDebt As Double, ByVal taxRate As Double, ByVal preferredStock As Double, ByVal costOfPreferredStock As Double) As Double
+    ' WACC = (Market Value of Equity/Total Value of Capital * Cost of Equity) + (Market Debt Value/Total Value of Capital * Cost of Debt * (1 - Tax Rate)) + (Cost of Preferred Stock * Market Value of Preferred Stock/Total Capital Value)
+    
+    Dim totalValue As Double
+    Dim costOfDebtAfterTax As Double
+    
+    ' total value of the firm (E + D + PS)
+    totalValue = equity + debt + preferredStock
+    
+    ' cost of debt net of tax
+    costOfDebtAfterTax = costOfDebt * (1 - taxRate)
+    
+    WACC = (equity / totalValue) * costOfEquity + (debt / totalValue) * costOfDebtAfterTax + (costOfPreferredStock * (preferredStock / totalValue))
+End Function
